@@ -1,0 +1,1149 @@
+/* General Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+ color: #f0f0f0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1em;
+    font-style: normal;
+    transition: background 0.3s, color 0.3s;
+}
+/* Default Light Mode Styles */
+body {
+    background-color: #ffffff;
+    color: #333;
+}
+.about-content {
+    color: #333; /* Default text color in light mode */
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #1e1e1e;
+    color: #b5b5b5;
+}
+
+
+body.dark-mode .about-content {
+    color: #f4f4f4; /* Text color for dark mode */
+}
+body.dark-mode .welcome-section {
+    background-color: #1e1e1e;
+}
+body.dark-mode .table {
+    background-color: #1e1e1e;
+    color: rgb(255, 255, 255);
+}
+
+a{
+    text-decoration: none;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    width: 100%;
+    padding: 1em;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensures navbar is on top */
+}
+
+.container {
+    display: flex;
+    margin: auto;
+    width: 80%;
+    height: 4em;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #A020F0, rgb(254, 216, 145)); 
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.027),
+                0 2px 2px rgba(0, 0, 0, 0.027),
+                0 4px 4px rgba(0, 0, 0, 0.027),
+                0 8px 8px rgba(0, 0, 0, 0.091),
+                0 16px 16px rgba(0, 0, 0, 0.084);
+    border-radius: 50px;
+}
+
+.menu-items {
+    display: flex;
+    margin: auto;
+    padding: 0.5rem;
+}
+
+.menu-items li {
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    list-style-type: none;
+    text-align: center;
+    margin-top: 0.3em;
+    font-size: 0.7em;
+}
+
+.menu-items a {
+    display: block;
+    position: relative;
+    text-decoration: none ;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    transition: all 0.4s ease-in-out;
+    color: white;
+}
+
+.menu-items a:hover {
+    background: #ffffff;
+    color: black;
+}
+
+/* Responsive Navbar */
+.menu-responsive-items {
+    display: none;
+}
+
+.icons #bar-open,
+.icons #x-closed {
+    display: none;
+    float: right;
+    margin-right: 1rem;
+    color: white;
+}
+
+.icons #bar-open {
+    font-size: 2.5em;
+}
+
+/* For devices with a screen width of up to 820px (portrait mode) */
+@media screen and (max-width: 820px) {
+    .icons #bar-open,
+    .icons #x-closed {
+        display: block;
+    }
+
+    .menu-items {
+        display: none;
+    }
+
+    .navbar {
+        width: 100%;
+        padding: 0;
+    }
+
+    .container {
+        float: right;
+        margin-top: 20px;
+        margin-right: 20px;
+        width: fit-content;
+        padding: 0.8rem 1rem;
+    }
+
+    .navbar.openNav .menu-responsive-items {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        height: 100vh;
+        width: 100vw;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        background-color: #A020F0;
+        color: #eee;
+        padding: 2em; /* Add padding for spacing */
+    }
+
+    .navbar.openNav .menu-responsive-items li {
+        list-style-type: none;
+        font-size: 1.5em;
+        margin-bottom: 2em; /* 2em gap between items */
+        display: flex;
+    }
+
+    .navbar.openNav .menu-responsive-items a {
+        text-decoration: none;
+        color: #eee;
+        border-radius: 50px;
+        padding: 0.5rem;
+        display: flex;
+        transition: all 1s ease;
+    }
+
+    .navbar.openNav .menu-responsive-items a:hover {
+        color: #F2C9FB;
+    }
+
+    .navbar.openNav .menu-responsive-items i {
+        margin-right: 0.5em; /* Space between icon and text */
+    }
+
+    .icons #bar-open {
+        margin: auto;
+        cursor: pointer;
+    }
+
+    .navbar.openNav .icons #x-closed {
+        position: absolute;
+        top: 20px;
+        right: 5px;
+        font-size: 2em;
+        padding: 0.5rem 0.9rem;
+        border-radius: 80px;
+        background: #ffffff3b;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.027),
+                    0 2px 2px rgba(0, 0, 0, 0.027),
+                    0 4px 4px rgba(0, 0, 0, 0.027),
+                    0 8px 8px rgba(0, 0, 0, 0.027),
+                    0 16px 16px rgba(0, 0, 0, 0.027);
+        cursor: pointer;
+        transition: all 0.8s ease;
+    }
+}
+
+/* For devices with a screen width between 821px and 1180px (landscape mode iPad Air) */
+@media screen and (min-width: 821px) and (max-width: 1180px) {
+    .icons #bar-open,
+    .icons #x-closed {
+        display: block;
+    }
+
+    .menu-items {
+        display: none;
+    }
+
+    .navbar {
+        width: 100%;
+        padding: 0;
+    }
+
+    .container {
+        float: right;
+        margin-top: 20px;
+        margin-right: 20px;
+        width: fit-content;
+        padding: 0.8rem 1rem;
+    }
+
+    .navbar.openNav .menu-responsive-items {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        height: 100vh;
+        width: 100vw;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        background-color: #A020F0;
+        color: #eee;
+        padding: 2em; /* Add padding for spacing */
+    }
+
+    .navbar.openNav .menu-responsive-items li {
+        list-style-type: none;
+        font-size: 1.4em;
+        margin-bottom: 2em; /* 2em gap between items */
+        display: flex;
+    }
+
+    .navbar.openNav .menu-responsive-items a {
+        text-decoration: none;
+        color: #eee;
+        border-radius: 50px;
+        padding: 0.5rem;
+        display: flex;
+        transition: all 1s ease;
+    }
+
+    .navbar.openNav .menu-responsive-items a:hover {
+        color: #F2C9FB;
+    }
+
+    .navbar.openNav .menu-responsive-items i {
+        margin-right: 0.5em; /* Space between icon and text */
+    }
+
+    .icons #bar-open {
+        margin: auto;
+        cursor: pointer;
+    }
+
+    .navbar.openNav .icons #x-closed {
+        position: absolute;
+        top: 2.5em;
+        right: 5px;
+        font-size: 2em;
+        padding: 0.5rem 0.9rem;
+        border-radius: 80px;
+        background: #ffffff3b;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.027),
+                    0 2px 2px rgba(0, 0, 0, 0.027),
+                    0 4px 4px rgba(0, 0, 0, 0.027),
+                    0 8px 8px rgba(0, 0, 0, 0.027),
+                    0 16px 16px rgba(0, 0, 0, 0.027);
+        cursor: pointer;
+        transition: all 0.8s ease;
+    }
+}
+
+/* Sticky Logo */
+.main-logo {
+    font-size: 1.3em;
+    font-style: italic;
+    position: fixed;
+    top: 1em; /* Adjust as needed */
+    left: 1em; /* Adjust as needed */
+    z-index: 101; /* Ensure it's above other content */
+    color: white;
+    display: none; /* Hidden by default */
+}
+@media screen and (max-width: 1024px) { /* Adjust breakpoint for iPads */
+    .main-logo {
+        display: block; /* Show on devices like iPads and smaller */
+    }
+    .hero-image{
+        display: none;
+    }
+    .heros-content {
+       margin: 0 !important;
+      
+    }
+    .slogan{
+        display: none !important;
+    }
+    .sticky-social{
+        display: none !important;
+    }
+    .heros-content {
+        
+      left: 2em !important;
+    }
+
+}
+
+
+
+/* Theme Toggle Button */
+#theme-toggle {
+    background: none;
+    border: none;
+    border-radius: 50%;
+    margin-left: 2em;
+    margin-top: 0.3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#theme-icon {
+    font-size: 2em; /* Adjust icon size */
+    color: #000000; /* Icon color */
+}
+
+.dark-mode #theme-icon {
+    color: #ffd700; /* Sun color */
+}
+
+
+
+/* Hero Section */
+.heros {
+    position: relative;
+    height: 80vh; /* Full viewport height */
+    background-image: url('images/2.jpg'); /* Replace with your image path */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.heros-content {
+    position: absolute;
+    left: 5em; /* Adjust the left position as needed */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for vertical centering */
+    text-align: left; /* Align text to the left */
+    color: white; /* Ensure text color is visible */
+}
+
+.heros h1 {
+    font-size: 3.5em;
+    margin-bottom: 0.5em;
+    font-weight: 800;
+}
+
+.slogan {
+    font-size: 0.8em;
+    font-weight: 600;
+}
+
+
+
+/* Sticky Social Media Icons */
+.sticky-social {
+    position: fixed;
+    left: 2em;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 100; /* Ensure it is above other content */
+}
+
+.social-icon {
+    display: block;
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+    margin: 10px 0; /* Spacing between icons */
+    background-color: #333; /* Background color for icons */
+    color: white; /* Icon color */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.social-icon:hover {
+    background-color: #a1a1a1; /* Change color on hover */
+}
+
+.social-icon i {
+    font-size: 1.5em; /* Adjust icon size */
+}
+
+
+
+/* Social Icons */
+.socially-icons {
+    display: flex;
+    gap: 1em; /* Gap between icons */
+    
+}
+
+.socially-icon {
+    border-radius: 50% !important;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.5em; /* Adjust icon size as needed */
+    transition: color 0.3s;
+   
+}
+
+.socially-icon:hover {
+   color: #a1a1a1;
+}
+
+
+/* About Us Section */
+.about-us {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: rgb(0, 0, 0);
+    gap: 2em; /* Space between text and image */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+}
+
+.about-content {
+    flex: 1;
+    text-align: left; 
+    padding: 1em;
+}
+
+.small-text {
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.about-us h1 {
+    color: #A020F0;
+    font-size: 2.5em;
+    margin: 0.5em 0;
+}
+
+.slogans {
+    font-size: 1.2em;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.description {
+    font-size: 0.7em;
+    margin: 1em 0;
+}
+
+.learn-more-btn {
+    background: linear-gradient(to right, #A020F0, rgb(254, 216, 145)); 
+    color: #ffffff; /* Match the gradient */
+    border: none;
+    border-radius: 10px;
+    padding: 0.75em 1.5em;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+/* Container for About Image */
+.about-image {
+    flex: 1;
+    overflow: hidden; /* Prevents any overflow of the image */
+    position: relative; /* Ensure the image positioning is relative to this container */
+    margin: 0; /* Remove margin */
+    padding: 0; /* Remove padding */
+}
+
+/* Keyframes for Scroll Animation */
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Apply animation to image */
+.about-image img {
+    width: 100%;
+    height: auto;
+    display: block; /* Ensures no extra space around the image */
+    animation: slideInFromRight 1s ease-out; /* Adjust duration as needed */
+    transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transition for scaling and filter effects */
+    margin: 0; /* Remove margin */
+    padding: 0; /* Remove padding */
+}
+
+/* Hover Effect */
+.about-image img:hover {
+    transform: scale(1.1); /* Scale image to 110% on hover */
+    filter: brightness(1.1); /* Slightly brighten the image on hover (optional) */
+}
+
+/* Media Query for screens smaller than 768px */
+@media (max-width: 768px) {
+    .about-us {
+        flex-direction: column; /* Stacks the text and image vertically */
+        align-items: center; /* Centers items horizontally */
+        text-align: center; /* Centers text horizontally */
+    }
+
+    .about-content {
+        order: 2; /* Moves text below the image */
+        margin-bottom: 2em; /* Adds space between the image and text */
+    }
+
+    .about-image {
+        order: 1; /* Moves image above the text */
+        width: 100%; /* Ensures the image takes full width */
+    }
+
+    .about-image img {
+        width: 100%; /* Ensures the image takes full width */
+    }
+}
+
+
+/* Facts Section */
+.facts-section {
+    position: relative;
+    width: 100%;
+    height: auto;
+   
+    color: white;
+}
+
+.facts-background {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.background-image {
+    width: 100%;
+    height: 160%; /* Set height to 20% of its container */
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 160%; /* Ensure overlay covers entire image */
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: 2;
+}
+
+.facts-content {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Adjust max width as needed */
+    z-index: 3;
+    padding-top: 3em;
+}
+
+.fact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 1em; /* Adjust margin as needed */
+}
+
+.fact-number {
+    font-size: 3em;
+    font-weight: 800;
+}
+.plus-icon {
+    font-size: 1.2em; /* Adjust size of the plus icon */
+}
+.fact-description {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .fact-number {
+        font-size: 2.5em; /* Adjust font size as needed */
+    }
+    .plus-icon {
+        font-size: 1em; /* Adjust size of the plus icon */
+    }
+
+    .fact-description {
+        font-size: 1em; /* Adjust font size as needed */
+    }
+}
+
+@media (max-width: 768px) {
+    .fact-number {
+        font-size: 2em; /* Adjust font size as needed */
+    }
+    .plus-icon {
+        font-size: 0.9em; /* Adjust size of the plus icon */
+    }
+
+    .fact-description {
+        font-size: 0.9em; /* Adjust font size as needed */
+    }
+}
+
+@media (max-width: 480px) {
+    .fact-number {
+        font-size: 1.5em; /* Adjust font size as needed */
+    }
+
+    .plus-icon {
+        font-size: 0.8em; /* Adjust size of the plus icon */
+    }
+
+    .fact-description {
+        font-size: 0.8em; /* Adjust font size as needed */
+    }
+}
+
+
+/* General styles */
+.image-text-section {
+    display: flex;
+    align-items: flex-start; /* Align items at the top */
+    margin-top: 8em;
+    flex-wrap: wrap; /* Allow items to wrap if needed */
+   
+    
+}
+
+.images {
+    display: flex;
+    gap: 2em; /* Gap between the two images */
+    flex: 1;
+    margin-left: 3em;
+}
+
+.image-container {
+    position: relative;
+    width: 20em; /* Adjust width as needed */
+    height: 25em; /* Increased height */
+    overflow: hidden; /* Ensure image doesn’t overflow */
+    display: flex; /* Ensure container aligns items */
+    align-items: center; /* Center the image inside the container */
+    justify-content: center; /* Center the image inside the container */
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: rotate(45deg); /* Rotate image */
+    position: absolute;
+    top: 0;
+  
+}
+
+/* Text content styles */
+.text-content {
+    max-width: 600px; /* Adjust text width as needed */
+   margin-right: 10em;
+    flex: 1;
+    margin-left: 1em !important;
+}
+
+.small-text {
+    font-size: 1em;
+    color: #A020F0;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 1em;
+}
+
+p {
+    font-size: 1em;
+    margin-bottom: 1em;
+}
+
+.book-button {
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(to right, #A020F0, rgb(254, 216, 145)); 
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.book-button:hover {
+    background: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .images {
+        display: none;
+    }
+    .text-content{
+        text-align: left;
+        margin: 0 2em;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .images {
+        display: none;
+    }
+}
+
+
+
+/* iPad Air Portrait Mode */
+@media (max-width: 820px) and (orientation: portrait) {
+    .images  {
+       display: none !important;
+}
+
+}
+
+.email-section {
+    position: relative;
+    height: 50vh; /* Adjust height as needed */
+    background-image: url('images/pexels-pixabay-325876.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.email-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2em;
+}
+
+.email-section h2 {
+    margin-bottom: 1em;
+    font-size: 1.5em; /* Increased font size for heading */
+}
+
+.email-input {
+    padding: 0.8em; /* Increased padding for larger input */
+    border-radius: 15px;
+    border: none;
+    width: 80%;
+    max-width: 500px; /* Increased max-width */
+    margin-bottom: 1em;
+    font-size: 1.2em; /* Increased font size for input text */
+}
+
+.submit-button {
+    padding: 0.8em 0.8em; /* Increased padding for larger button */
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(to right, #A020F0, rgb(254, 216, 145)); 
+    color: white;
+    font-size: 1em; /* Increased font size for button text */
+    cursor: pointer;
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .email-input, .submit-button {
+        width: 90%;
+    }
+}
+.our-work{
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 1.3em;
+}
+
+.gradient-text {
+    background: linear-gradient(to right, #A020F0, #FEDD91); /* Gradient colors */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Hide text color */
+    background-clip: text; /* For non-webkit browsers */
+   
+}
+
+
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    justify-content: center; /* Center items */
+}
+
+.image-grid .image-item {
+    position: relative;
+    width: calc(100% / 3); /* Three images per row on larger screens */
+    padding-bottom: calc(100% / 3); /* Maintain aspect ratio */
+}
+
+.image-grid .image-item img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-grid .image-item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-grid .image-item .overlay:hover {
+    opacity: 1;
+}
+
+.image-grid .image-item .overlay .icon {
+    color: #fff;
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+.image-grid .image-item .overlay p {
+    color: #fff;
+    font-size: 1.2em;
+    text-align: center;
+    margin: 0;
+    padding: 0.5em;
+}
+
+@media (max-width: 1024px) {
+    .image-grid .image-item {
+        width: 50%; /* Two images per row on medium screens */
+        padding-bottom: 50%; /* Maintain aspect ratio */
+    }
+}
+
+@media (max-width: 768px) {
+    .image-grid .image-item {
+        width: 100%; /* One image per row on smaller screens */
+        padding-bottom: 100%; /* Maintain aspect ratio */
+    }
+}
+
+
+
+.footer-section {
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 0.8em;
+    padding: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-column {
+    width: 25%;
+    margin-bottom: 1em;
+}
+
+.footer-column h3 {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+}
+
+.footer-column ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 0.5em;
+}
+
+.footer-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2em;
+}
+
+.footer-bottom p,
+.footer-bottom a {
+    margin: 0;
+    
+}
+
+body.dark-mode .footer-section {
+    background-color: #1e1e1e;
+    color: #f4f4f4;
+}
+body.dark-mode .bodys {
+    background-color: #1e1e1e;
+    color: #f4f4f4;
+}
+
+
+
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    margin-right: 1em !important;
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease;
+    
+}
+
+.social-icon:hover {
+    background-color: darken(var(--bg-color), 10%);
+}
+
+.social-icon i {
+    color: rgb(0, 0, 0);
+    font-size: 1em;
+
+}
+
+
+@media screen and (max-width: 768px) {
+    .footer-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-column {
+        width: 100%;
+        margin-bottom: 2em;
+    }
+
+    .footer-bottom {
+        text-align: center;
+    }
+}
+
+
+/* Popup Styles */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* Adjusted margin for better centering */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Adjust the width as needed, 50% is a starting point */
+    max-width: 600px; /* Set a maximum width to avoid too large popups on larger screens */
+    border-radius: 8px; /* Optional: Rounded corners */
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Form Styles */
+#appointment-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#appointment-form label {
+    margin: 0.5em 0 0.2em;
+}
+
+#appointment-form input,
+#appointment-form textarea {
+    margin-bottom: 1em;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#appointment-form button {
+    padding: 0.7em;
+    background: linear-gradient(to right, #A020F0, #FEDD91); /* Gradient colors */
+   
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#appointment-form button:hover {
+    background-color: #45a049;
+}
+
+
+
+
+.welcome-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+   
+    margin-top: 4.5em; /* Adjust this value if your navbar height changes */
+}
+
+.welcome-text {
+    font-size: 1.7em;
+    font-weight: 500;
+   
+   
+}
+b{
+    
+    font-weight: 600;
+    background: linear-gradient(to right, #A020F0, #FEDD91); /* Gradient colors */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Hide text color */
+    background-clip: text; 
+}
+
+.icon-container {
+    display: flex;
+    gap: 10px;
+}
+
+
+
+@media (max-width: 768px) {
+    .welcome-section {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .icon-container {
+        margin-top: 0;
+        justify-content: flex-start;
+    }
+}
+
+
+
+

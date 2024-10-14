@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.5/scrollreveal.min.js"></script>
+
+
+    <style>
+        /* Blinking cursor effect */
+        .blinking-cursor {
+            font-weight: 300;
+            font-size: 1em;
+            background: linear-gradient(to right, #A020F0, #FEDD91);
+            /* Gradient colors */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            /* Hide text color */
+            background-clip: text;
+            ;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+
+        .our-team-section {
+            padding: 2em;
+
+            text-align: center;
+        }
+
+        .team-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2em;
+        }
+
+        .team-member {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 200px;
+        }
+
+        .team-member img {
+            width: 100%;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member p {
+            margin-top: 1em;
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        .team-member:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+
+        <nav class="navbar">
+            <div class="container">
+                <div class="icons">
+                    <i class="fa-solid fa-bars" id="bar-open"></i>
+                </div>
+
+                <ul class="menu-items">
+                    <div class="logo"
+                        style="font-size: 1.1em; font-style: italic; margin-right: 4em; margin-top: 0.3em;">ZAHIR BY
+                        ALOG
+                    </div>
+
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="book-appointment.html">Book Appointment</a></li>
+                    <li><a href="#">Our Works</a></li>
+
+                    <li><a href="sign-up.html"><i class="fas fa-user-plus" style="font-size: 1em;"></i></a></li>
+                    <li>
+                        <button id="theme-toggle" aria-label="Toggle Dark/Light Mode" style="outline: none;">
+                            <i id="theme-icon" class="fa-solid fa-moon"></i>
+                        </button>
+                    </li>
+
+                </ul>
+                <ul class="menu-responsive-items">
+
+                    <div class="icons">
+                        <i class="fa-solid fa-xmark" id="x-closed"></i>
+                    </div>
+
+
+                    <li><a href="#"><i class="fa-solid fa-home"></i> Home</a></li>
+                    <li><a href="#"><i class="fa-solid fa-user"></i> About Us</a></li>
+                    <li><a href="#"><i class="fa-solid fa-calendar-check"></i> Book Appointment</a></li>
+                    <li><a href="#"><i class="fa-solid fa-briefcase"></i> Our Works</a></li>
+                    <li><a href="#"><i class="fa-solid fa-user-plus"></i> Sign In</a></li>
+
+                    <div class="socially-icons">
+                        <a href="https://facebook.com" target="_blank" class="socially-icon"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://twitter.com" target="_blank" class="socially-icon"><i
+                                class="fa-brands fa-twitter"></i></a>
+                        <a href="https://instagram.com" target="_blank" class="socially-icon"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="socially-icon"><i
+                                class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+    <section class="big-ideas-section" style="margin-left: 2em; margin-top: 5em;">
+        <div class="big-ideas-content">
+
+            <span style="font-size: 4em;">BIG <b>IDEAS</b><span class="blinking-cursor">|</span></span>
+            <br>START WITH CHEESPACE.
+            </h2>
+            <p class="scroll-reveal" style="margin-bottom: 1em; font-weight: 600;">
+                Brand and Marketing Agency with over 1000+ Web sites completed and Hundreds of Brands. Experience is
+                our middle name. We have served clients from all over the United States and many other countries for
+                over 10 continuous years. Our client portfolio includes Restaurants, Music, Real Estate,
+                Non-Profits, Retail, Government, Educational Industries from Small Independent Businesses to Big
+                Brand Name Corporations.
+            </p>
+            <p class="scroll-reveal" style="margin-bottom: 1em;">
+                We collaborated for the development of their Brand, Website, Social media, Video Production,
+                Membership Portals, Product Design, Promotional Events, Print Assets, Marketing Research, SEO, PPC
+                Campaigns. Suner and Garcia professionals, are a fine assortment of movers, shakers, creatives,
+                designers, planners, tech enthusiast dedicated with a passion that achieves our client’s success.
+            </p>
+            <br>
+            <p>BIG IDEAS | START WITH CHEE.</p>
+        </div>
+    </section>
+    </div>
+
+
+
+    <section class="our-team-section">
+        <h2 style="font-size: 4em;"><b>OUR</b> TEAM</b></h2>
+        <div class="team-container">
+
+            <div class="team-member scroll-reveal">
+                <img src="images/q.png" alt="Team Member">
+                <p>Annel G.<br>Account Manager</p>
+            </div>
+            <div class="team-member scroll-reveal">
+                <img src="images/q.png" alt="Team Member">
+                <p>Member Name<br>Position</p>
+            </div>
+            <div class="team-member scroll-reveal">
+                <img src="images/q.png" alt="Team Member">
+                <p>Member Name<br>Position</p>
+            </div>
+            <div class="team-member scroll-reveal">
+                <img src="images/q.png" alt="Team Member">
+                <p>Member Name<br>Position</p>
+            </div>
+            <div class="team-member scroll-reveal">
+                <img src="images/q.png" alt="Team Member">
+                <p>Member Name<br>Position</p>
+            </div>
+            <div class="team-member scroll-reveal">
+                <img src="images/q.png" alt="Team Member">
+                <p>Member Name<br>Position</p>
+            </div>
+            <div class="team-member scroll-reveal">
+                <img src="images/q.png" alt="Team Member">
+                <p>Member Name<br>Position</p>
+            </div>
+            <div class="team-member scroll-reveal">
+                <img src="images/q.png" alt="Team Member">
+                <p>Member Name<br>Position</p>
+            </div>
+            <div class="team-member scroll-reveal">
+                <img src="images/q.png" alt="Team Member">
+                <p>Member Name<br>Position</p>
+            </div>
+            <div class="team-member scroll-reveal">
+                <img src="images/q.png" alt="Team Member">
+                <p>Member Name<br>Position</p>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+    <section class="email-section">
+        <div class="overlay">
+            <h2>Message for More Details</h2>
+            <form action="YOUR_FORM_ACTION_URL" method="post">
+                <input type="email" name="email" placeholder="Enter your email" class="email-input" required>
+                <button type="submit" class="submit-button">Send</button>
+            </form>
+        </div>
+    </section>
+
+
+
+
+
+
+    <footer class="footer-section">
+        <div class="footer-column">
+            <h3>Expertise</h3>
+            <ul>
+                <li>Custom Suit Tailoring</li>
+                <li>Alterations and Adjustments</li>
+                <li>Fashion Consulting</li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Services</h3>
+            <ul>
+                <li>Custom Suit Design</li>
+                <li>Clothing Alterations</li>
+                <li>Fashion Consultation</li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Blog</h3>
+            <ul>
+                <li>Tailoring Trends</li>
+                <li>Fashion Tips</li>
+                <li>Client Stories</li>
+                <li>Behind the Scenes</li>
+                <li>Fabric Insights</li>
+            </ul>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 ZAHIR BY ALOG</p>
+
+            <div class="social-icons">
+                <a href="#" class="social-icon" style="--bg-color: #3b5998;"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon" style="--bg-color: #00acee;"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon" style="--bg-color: #25D366;"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="social-icon" style="--bg-color: #0e76a8;"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+
+
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            ScrollReveal().reveal('.scroll-reveal', {
+                duration: 1000,
+                distance: '20px',
+                easing: 'ease-in-out',
+                origin: 'bottom',
+                interval: 200
+            });
+        });
+    </script>
+</body>
+
+</html>

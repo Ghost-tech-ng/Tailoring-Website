@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Notepad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .first {
+
+            padding: 10px;
+            text-align: center;
+        }
+
+        .toolbar {
+            margin: 10px 0;
+        }
+
+        .toolbar button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            border: none;
+            background: #ffffff;
+            cursor: pointer;
+        }
+
+
+
+        .editor {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #fff;
+            padding: 10px;
+            margin: 0 auto;
+            width: 80%;
+            height: 80vh;
+            overflow-y: auto;
+        }
+
+        .editor {
+            border: 1px solid #ccc;
+            padding: 10px;
+            min-height: 200px;
+            /* Adjust as needed */
+        }
+
+        .editor.placeholder::before {
+            content: 'Start typing your document here...';
+            color: #aaa;
+            display: block;
+        }
+
+        .saved-documents {
+            margin: 20px auto;
+            width: 80%;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 100%;
+            max-width: 300px;
+            /* Adjust width to make cards smaller */
+            height: 300px;
+            /* Adjust height to make cards square */
+            overflow: hidden;
+            position: relative;
+            display: inline-block;
+            vertical-align: top;
+
+        }
+
+        .card-title {
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        .card-content {
+            height: calc(100% - 60px);
+            /* Adjust based on card height and action bar height */
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+
+        .card-actions {
+            text-align: right;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            left: 10px;
+        }
+
+        .card-actions button {
+            margin-left: 5px;
+            padding: 5px;
+        }
+
+        .logout-container {
+            position: fixed;
+            bottom: 10px;
+            /* Position at the bottom */
+            left: 10px;
+            /* Position at the left */
+            z-index: 1000;
+
+            /* Ensure it is above other elements */
+        }
+
+        #logout-button {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to right, #A020F0, #FEDD91);
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+
+        }
+
+        #logout-button i {
+            margin-right: 5px;
+        }
+
+        /* Popup container - can be anything you want */
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        /* Popup content */
+        .popup-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            position: relative;
+            text-align: center;
+            /* Center text inside the popup */
+        }
+
+        /* Centered SVG image */
+        .popup-content svg {
+            display: block;
+            margin: 0 auto 20px auto;
+        }
+
+        /* Logout button */
+        .popup-content .logout-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        /* Close button */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="icons">
+                    <i class="fa-solid fa-bars" id="bar-open"></i>
+                </div>
+                <div class="main-logo">
+                    ZAHIR BY ALOG
+                </div>
+                <ul class="menu-items">
+                    <div class="logo" style="font-size: 1.1em; margin-right: 4em; margin-top: 0.3em;">ZAHIR BY
+                        ALOG
+                    </div>
+                    <li><a href="client.html">Home</a></li>
+                    <li><a href="notepad.html">Notepad</a></li>
+                    <li><a href="appointment.html"><i class="fa-solid fa-calendar-check"></i></a></li>
+                    <li><a href="orders.html">Order History</a></li>
+                    <li><a href="javascript:void(0);" onclick="openPopup()"> <i class="fas fa-sign-out-alt"
+                                style="font-size: 1em;"></i></a></li>
+                    <li>
+
+                        <button id="theme-toggle" aria-label="Toggle Dark/Light Mode" style="outline: none;">
+                            <i id="theme-icon" class="fa-solid fa-moon"></i>
+                        </button>
+
+                    </li>
+                </ul>
+                <ul class="menu-responsive-items">
+                    <div class="icons">
+                        <i class="fa-solid fa-xmark" id="x-closed"></i>
+                    </div>
+                    <li><a href="client.html"><i class="fa-solid fa-home"></i> Home</a></li>
+                    <li><a href="notepad.html"><i class="fa-solid fa-user"></i> Notepad</a></li>
+                    <li><a href="appointment.html"><i class="fa-solid fa-calendar-check"></i> Appointments</a></li>
+                    <li><a href="orders.html"><i class="fa-solid fa-briefcase"></i> Order History</a></li>
+                    <li><a href="javascript:void(0);" onclick="openPopup()"> <i class="fas fa-sign-out-alt"
+                                style="font-size: 1em;"></i> Log Out</a></li>
+                    <li>
+                        <div class="socially-icons">
+                            <a href="https://facebook.com" target="_blank" class="socially-icon"><i
+                                    class="fa-brands fa-facebook-f"></i></a>
+                            <a href="https://twitter.com" target="_blank" class="socially-icon"><i
+                                    class="fa-brands fa-twitter"></i></a>
+                            <a href="https://instagram.com" target="_blank" class="socially-icon"><i
+                                    class="fa-brands fa-instagram"></i></a>
+                            <a href="https://linkedin.com" target="_blank" class="socially-icon"><i
+                                    class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- The Popup -->
+    <div id="logoutPopup" class="popup" onclick="closePopup(event)">
+        <div class="popup-content" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <h2 style="font-size: 1em; text-align: center; font-weight: 600;">Are you sure you want to quit?</h2>
+            <!-- SVG image -->
+            <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+                type="module"></script>
+
+            <dotlottie-player src="https://lottie.host/8c62819a-cd47-42f4-9865-16246a3c229d/1lOlH0JR6w.json"
+                background="transparent" speed="1" style="width: 300px; height: 300px;" loop
+                autoplay></dotlottie-player>
+            <button class="btn btn-danger logout-btn" onclick="logout()">Log Out</button>
+        </div>
+    </div>
+    <section class="welcome-section">
+        <div class="welcome-text" style="font-size: 2em;">Notepad <b>Playground</b></div>
+
+        <div class="icon-container">
+            <div class="social-icons">
+                <a href="#" class="social-icon" style="--bg-color: #3b5998;"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon" style="--bg-color: #00acee;"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon" style="--bg-color: #25D366;"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="social-icon" style="--bg-color: #0e76a8;"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </section>
+    <div class="first">
+
+        <div class="toolbar">
+            <button onclick="document.execCommand('bold')" style="color: black;"><b>B</b></button>
+            <button onclick="document.execCommand('italic')"><i>I</i></button>
+            <button onclick="document.execCommand('underline')"><u>U</u></button>
+            <button onclick="document.execCommand('insertOrderedList')">OL</button>
+            <button onclick="document.execCommand('insertUnorderedList')">UL</button>
+            <button onclick="document.execCommand('foreColor', false, 'red')">Red</button>
+            <button onclick="document.execCommand('foreColor', false, 'black')">Black</button>
+            <button onclick="saveDocument()">Save</button>
+        </div>
+    </div>
+
+    <div id="editor" contenteditable="true" class="editor"></div>
+
+    <div id="saved-documents" class="saved-documents">
+        <!-- Saved documents will appear here -->
+    </div>
+    <div class="logout-container">
+        <button id="logout-button" class="btn btn-dark">
+            <i class="fa-solid fa-sign-out-alt"></i> Log Out
+        </button>
+    </div>
+
+    <footer class="footer-section">
+
+
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 ZAHIR BY ALOG</p>
+
+            <div class="social-icons">
+                <a href="#" class="social-icon" style="--bg-color: #3b5998;"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon" style="--bg-color: #00acee;"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon" style="--bg-color: #25D366;"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="social-icon" style="--bg-color: #0e76a8;"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const editor = document.getElementById('editor');
+
+            // Function to check and update placeholder
+            function updatePlaceholder() {
+                if (editor.textContent.trim() === '') {
+                    editor.classList.add('placeholder');
+                } else {
+                    editor.classList.remove('placeholder');
+                }
+            }
+
+            // Add placeholder when the content is empty
+            updatePlaceholder();
+
+            // Handle input events
+            editor.addEventListener('input', updatePlaceholder);
+            editor.addEventListener('focus', () => {
+                editor.classList.remove('placeholder');
+            });
+            editor.addEventListener('blur', updatePlaceholder);
+        });
+    </script>
+    <script>
+        function openPopup() {
+            document.getElementById("logoutPopup").style.display = "block";
+        }
+
+        function closePopup(event) {
+            if (event.target.id === "logoutPopup" || event.target.className === "close-btn") {
+                document.getElementById("logoutPopup").style.display = "none";
+            }
+        }
+
+        function logout() {
+            // Handle the logout process here
+            window.location.href = "index.html";
+        }
+    </script>
+    <script>
+        // Function to save the document to localStorage
+        function saveDocument() {
+            const editorContent = document.getElementById('editor').innerHTML;
+            const timestamp = new Date().toISOString();
+            localStorage.setItem(`document-${timestamp}`, editorContent);
+            displaySavedDocuments();
+        }
+
+        // Function to display saved documents
+        function displaySavedDocuments() {
+            const savedDocumentsContainer = document.getElementById('saved-documents');
+            savedDocumentsContainer.innerHTML = ''; // Clear existing content
+
+            Object.keys(localStorage).forEach((key) => {
+                if (key.startsWith('document-')) {
+                    const card = document.createElement('div');
+                    card.classList.add('card');
+
+                    const cardTitle = document.createElement('div');
+                    cardTitle.classList.add('card-title');
+                    cardTitle.textContent = `Document saved at ${key.replace('document-', '')}`;
+                    card.appendChild(cardTitle);
+
+                    const cardContent = document.createElement('div');
+                    cardContent.classList.add('card-content');
+                    cardContent.innerHTML = localStorage.getItem(key);
+                    card.appendChild(cardContent);
+
+                    const cardActions = document.createElement('div');
+                    cardActions.classList.add('card-actions');
+
+                    const editButton = document.createElement('button');
+                    editButton.textContent = 'Edit';
+                    editButton.classList.add('btn', 'btn-warning');
+                    editButton.addEventListener('click', () => {
+                        document.getElementById('editor').innerHTML = localStorage.getItem(key);
+                        document.getElementById('saved-documents').innerHTML = ''; // Clear saved documents to avoid duplicates
+                        localStorage.removeItem(key); // Remove the old document
+                    });
+
+                    const deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Delete';
+                    deleteButton.classList.add('btn', 'btn-danger');
+                    deleteButton.addEventListener('click', () => {
+                        localStorage.removeItem(key);
+                        displaySavedDocuments(); // Refresh the list
+                    });
+
+                    cardActions.appendChild(editButton);
+                    cardActions.appendChild(deleteButton);
+                    card.appendChild(cardActions);
+
+                    savedDocumentsContainer.appendChild(card);
+                }
+            });
+        }
+
+        // Load document content and display saved documents when the page is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            displaySavedDocuments();
+        });
+
+    </script>
+</body>
+
+</html>

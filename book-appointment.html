@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <style>
+        .appointment-page {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2em;
+
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 2em;
+        }
+
+        .appointment-content {
+            flex: 1;
+            max-width: 50%;
+            padding: 1em;
+        }
+
+        .appointment-content h1 {
+            font-size: 0.8em;
+            margin-bottom: 0.7em;
+            margin-top: 1.5em;
+            font-weight: 550;
+        }
+
+        .appointment-content p {
+            font-size: 1.5em;
+
+            font-weight: 600;
+            margin-bottom: 1em;
+            background: linear-gradient(to right, #A020F0, #FEDD91);
+            /* Gradient colors */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            /* Hide text color */
+            background-clip: text;
+            /* For non-webkit browsers */
+        }
+
+        .appointment-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .appointment-form label {
+            margin-top: 0.5em;
+            font-weight: bold;
+            font-weight: 300;
+        }
+
+        .appointment-form input {
+            margin-bottom: 1em;
+            padding: 0.5em;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1em;
+
+        }
+
+        .submit-btn {
+            background: linear-gradient(to right, #A020F0, #FEDD91);
+
+            color: white;
+            border: none;
+            padding: 0.75em 1.5em;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+
+
+        .appointment-image {
+            flex: 1;
+            max-width: 50%;
+        }
+
+        .appointment-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .contact,
+        .faq,
+        .location {
+            padding: 2rem 1rem;
+        }
+
+        .contact-container,
+        .faq-container,
+        .location-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            /* Added to handle smaller screens */
+        }
+
+        .contact-form,
+        .address {
+            flex: 1;
+            padding: 1rem;
+            box-sizing: border-box;
+            /* Ensure padding does not affect width */
+        }
+
+        .contact-form h2,
+        .address h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-form label {
+            display: block;
+            margin: 0.5rem 0;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(to right, #A020F0, #FEDD91);
+            /* Gradient colors */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .bb {
+            background: linear-gradient(to right, #A020F0, #FEDD91);
+            /* Gradient colors */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            /* Hide text color */
+            background-clip: text;
+            /* For non-webkit browsers */
+        }
+
+        .contact-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .address p {
+            margin: 0.5rem 0;
+        }
+
+        .map {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+
+
+        }
+
+        @media (max-width: 768px) {
+            .appointment-page {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .appointment-image {
+                order: -1;
+                /* Move image up */
+                max-width: 100%;
+                margin-bottom: 1em;
+                /* Add space between image and content */
+            }
+
+            .appointment-content {
+                max-width: 100%;
+            }
+
+            .contact-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .contact-form {
+                order: 1;
+                /* Ensure contact form stays above address */
+            }
+
+            .address {
+                order: 2;
+                /* Address goes below contact form */
+                margin-top: 1em;
+                /* Add space above address */
+            }
+        }
+    </style>
+
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="icons">
+                    <i class="fa-solid fa-bars" id="bar-open"></i>
+                </div>
+                <div class="main-logo">
+                    ZAHIR BY ALOG
+                </div>
+                <ul class="menu-items">
+                    <div class="logo"
+                        style="font-size: 1.1em; font-style: italic; margin-right: 4em; margin-top: 0.3em;">ZAHIR BY
+                        ALOG
+                    </div>
+
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="book-appointment.html">Book Appointment</a></li>
+                    <li><a href="our-works.html">Our Works</a></li>
+                    <li><a href="#" id="open-appointment-popup"><i class="fa-solid fa-calendar-check"></i></a></li>
+
+                    <li><a href="sign-up.html"><i class="fas fa-user-plus" style="font-size: 1em;"></i></a></li>
+                    <li>
+                        <button id="theme-toggle" aria-label="Toggle Dark/Light Mode">
+                            <i id="theme-icon" class="fa-solid fa-moon"></i>
+                        </button>
+                    </li>
+
+                </ul>
+                <ul class="menu-responsive-items">
+
+                    <div class="icons">
+                        <i class="fa-solid fa-xmark" id="x-closed"></i>
+                    </div>
+
+
+                    <li><a href="index.html"><i class="fa-solid fa-home"></i> Home</a></li>
+                    <li><a href="about-us.html"><i class="fa-solid fa-user"></i> About Us</a></li>
+                    <li><a href="book-appointment.html"><i class="fa-solid fa-calendar-check"></i> Book Appointment</a>
+                    </li>
+                    <li><a href="our-works.html"><i class="fa-solid fa-briefcase"></i> Our Works</a></li>
+                    <li><a href="sign-up.html"><i class="fa-solid fa-user-plus"></i> Sign In</a></li>
+
+                    <div class="socially-icons">
+                        <a href="https://facebook.com" target="_blank" class="socially-icon"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://twitter.com" target="_blank" class="socially-icon"><i
+                                class="fa-brands fa-twitter"></i></a>
+                        <a href="https://instagram.com" target="_blank" class="socially-icon"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="socially-icon"><i
+                                class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+    <section class="appointment-page">
+        <div class="appointment-content">
+            <h1>Book Your Appointment</h1>
+            <p>Choose the best time and date that works for you.</p>
+            <form class="appointment-form" action="book-appointment.php" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+            
+                <label for="time">Time:</label>
+                <input type="time" id="time" name="time" required>
+            
+                <label for="notes">Notes:</label>
+                <textarea id="notes" name="notes" rows="4" required></textarea>
+            
+                <button type="submit" class="submit-btn">Book Appointment</button>
+            </form>
+            
+        </div>
+        <div class="appointment-image">
+            <img src="images/hero.svg" alt="Appointment">
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="contact-container">
+            <div class="contact-form">
+                <h2> <b class="bb">Contact</b> </h2>
+                <form>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+            <div class="address">
+                <h2 style="font-size: 1em;">Our Address</h2>
+                <p>123 Example Street</p>
+                <p>Benin, NG 19000</p>
+                <p>Email: contact@example.com</p>
+
+                <h2 style="font-size: 1em;">Our Address</h2>
+                <p>123 Example Street</p>
+                <p>Benin, NG 19000</p>
+                <p>Email: contact@example.com</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="map">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.4670531724407!2d-122.42143748468183!3d37.77492977975824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808b9e4e3f4f%3A0x32d8d6a32f6b2e9a!2sSan%20Francisco%2C%20CA%2094154!5e0!3m2!1sen!2sus!4v1629987161045!5m2!1sen!2sus"
+            allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+
+
+    <section class="email-section">
+        <div class="overlay">
+            <h2>Message for More Details</h2>
+            <form action="YOUR_FORM_ACTION_URL" method="post">
+                <input type="email" name="email" placeholder="Enter your email" class="email-input" required>
+                <button type="submit" class="submit-button">Send</button>
+            </form>
+        </div>
+    </section>
+
+
+
+
+
+
+    <footer class="footer-section">
+        <div class="footer-column">
+            <h3>Expertise</h3>
+            <ul>
+                <li>Custom Suit Tailoring</li>
+                <li>Alterations and Adjustments</li>
+                <li>Fashion Consulting</li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Services</h3>
+            <ul>
+                <li>Custom Suit Design</li>
+                <li>Clothing Alterations</li>
+                <li>Fashion Consultation</li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Blog</h3>
+            <ul>
+                <li>Tailoring Trends</li>
+                <li>Fashion Tips</li>
+                <li>Client Stories</li>
+                <li>Behind the Scenes</li>
+                <li>Fabric Insights</li>
+            </ul>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 ZAHIR BY ALOG</p>
+
+            <div class="social-icons">
+                <a href="#" class="social-icon" style="--bg-color: #3b5998;"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon" style="--bg-color: #00acee;"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon" style="--bg-color: #25D366;"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="social-icon" style="--bg-color: #0e76a8;"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('form');
+            form.addEventListener('submit', function (event) {
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+
+                if (!name || !email || !message) {
+                    alert('Please fill out all fields.');
+                    event.preventDefault(); // Prevent form submission
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
